@@ -1,0 +1,65 @@
+{% load staticfiles %}
+
+<!DOCTYPE html> <!-- HTML5 document type -->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Studentool</title>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="{% static "css/base.css" %}" />
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <a href="http://localhost:8001"><h2>STUDENTOOL</h2></a>
+            <nav>
+                <ul>
+                    <li><a href="http://localhost:8001/assignatures">Assignatures</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="#">{{ user.get_username }}</a></li>
+                        <li><a href="http://localhost:8001/accounts/logout">Log Out</a></li>
+                    {% else %}
+                        <li><a href="http://localhost:8001/accounts/login">Log in</a></li>
+                        <li><a href="http://localhost:8001/accounts/register">Sign up</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        
+        </div>
+        <div id="container">
+            <div id="contents">
+                <div id="content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div id="icons">
+                <a href="https://facebook.com/eguitler" target="_blank"><img src="{% static "social/facebook.png" %}"></a>
+                <a href="https://twitter.com/eguitler" target="_blank"><img src="{% static "social/twitter.png" %}"></a>
+                <a href="https://instagram.com/eguitler" target="_blank"><img src="{% static "social/instagram.png" %}"></a>
+                <a href="https://ar.linkedin.com/in/eguitler" target="_blank"><img src="{% static "social/linkedin.png" %}"></a>
+                <a href="https://youtube.com/eguitler" target="_blank"><img src="{% static "social/youtube.png" %}"></a>
+                <a href="https://plus.google.com/+EzequielGuitler" target="_blank"><img src="{% static "social/google-plus.png" %}"></a> 
+            </div>
+            <div id="icons_license">
+                <p>
+                    Icons made by <a href="http://www.flaticon.com/authors/bogdan-rosu" title="Bogdan Rosu"><u>Bogdan Rosu</u></a> 
+                    from <a href="http://www.flaticon.com" title="Flaticon"><u>www.flaticon.com</u></a> 
+                    is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"><u>CC BY 3.0</u></a>
+                </p>
+                <p>Copiright &copy;. All rights reserved. Web made by Ezequiel Guitler.</p>
+            </div>
+        </div>
+    </body>
+</html>
