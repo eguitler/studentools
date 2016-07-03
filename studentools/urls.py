@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from studentools.views import Home
 
 urlpatterns = [
+	# Admin
     url(r'^admin/', admin.site.urls),
-]
+    # Home
+    url(r'^$', Home.as_view()),
+    # Manage Account
+    url(r'^accounts/', registration.backends.hmac.urls),
+] + staticfiles_urlpatterns()
