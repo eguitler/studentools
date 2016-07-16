@@ -4,10 +4,11 @@
     <form action="#" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Sign Up">
+        <p><input class="btn btn-success" type="submit" value="Log In"></p>
 <!--        <input type="hidden" name="next" value="{{ next }}" />
 -->
     </form>
-    <p>Forgot password? <a href="{% url 'auth_password_reset' %}">Reset it</a>!</p>
-    <p>Not member? <a href="{% url 'registration_register' %}">Register</a>!</p>
+
+    <p><a class="btn btn-info" href="{% url 'registration_register' %}">Create New Account</a></p>
+    <p><a href="{% url 'auth_password_reset' %}">Forgot password?</a></p>
 {% endblock %}
