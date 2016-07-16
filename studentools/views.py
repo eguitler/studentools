@@ -4,6 +4,13 @@ from django.views.generic import View
 
 class Home(View):
 
-	def get(self, request):
-		context = {}
-		return render(request, 'index.html', context)
+    def get(self, request):
+        context = {}
+        return render(request, 'index.html', context)
+
+
+class Institutions(View):
+
+    def get(self, request):
+        context = {}
+        return render(request, 'institutions/institutions.html', context)

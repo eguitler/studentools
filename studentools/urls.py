@@ -17,13 +17,18 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from studentools.views import Home
+from studentools.views import (
+    Home,
+    Institutions
+)
 
 urlpatterns = [
-	# Admin
+    # Admin
     url(r'^admin/', admin.site.urls),
     # Home
     url(r'^$', Home.as_view()),
     # Manage Account
     url(r'^accounts/', include('registration.backends.hmac.urls')),
+    # Institutions
+    url(r'^institutions/', Institutions.as_view()),
 ] + staticfiles_urlpatterns()
