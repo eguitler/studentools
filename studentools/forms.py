@@ -6,7 +6,7 @@ from registration.forms import RegistrationForm
 #from registration.forms import RegistrationFormUniqueEmail
 from django.contrib.auth.models import User
 
-from studentools.models import CustomUser
+from studentools.models import BaseCustomUser
 
 
 year = datetime.now().year
@@ -37,7 +37,7 @@ def set_placeholders(form):
 class LogInForm(AuthenticationForm):
 
     class Meta():
-        model = CustomUser
+        model = BaseCustomUser
         fields = ('username', 'password')
 
     def __init__(self, *args, **kwargs):
@@ -49,7 +49,7 @@ class LogInForm(AuthenticationForm):
 class SignUpForm(RegistrationForm):
 
     class Meta():
-        model = CustomUser
+        model = BaseCustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
