@@ -3,10 +3,9 @@
 {% block content %}
     <form action="#" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <p>{{form.username.errors.0}} {{form.username }}</p>
+        <p>{{form.password.errors.0}} {{form.password }}</p>
         <p><input class="btn btn-success" type="submit" value="Log In"></p>
-<!--        <input type="hidden" name="next" value="{{ next }}" />
--->
     </form>
 
     <p><a class="btn btn-info" href="{% url 'registration_register' %}">Create New Account</a></p>

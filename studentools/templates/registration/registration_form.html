@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <style>
+        ul,li {list-style-type:none;}
+    </style>
     <form action="#" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Sign Up">
+        <p>{{ form.first_name.errors.0 }} {{ form.first_name }}</p>
+        <p>{{ form.last_name.errors.0 }} {{ form.last_name }}</p>
+        <p>{{ form.username.errors.0 }} {{ form.username }}</p>
+        <p>{{ form.email.errors.0 }} {{ form.email }}</p>
+        <p>{{ form.password1.errors.0 }} {{ form.password1 }}</p>
+        <p>{{ form.password2.errors.0 }} {{ form.password2 }}</p>
+        <p>{{ form.birthday.errors.0 }} {{ form.birthday }}</p>
+        <p>{{ form.genere.errors.0 }} {{form.genere.0}} {{ form.genere.1 }}</p>
+        <p>By clicking Sign Up, you agree to our Terms and that you have read our Data Policy, including our Cookie Use.</p>
+        <input class="btn btn-info" type="submit" value="Sign Up">
     </form>
 {% endblock %}
