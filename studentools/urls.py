@@ -17,8 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+from studentools.forms import SignUpForm
 from studentools.views import (
     Home,
+    Registration,
     Institutions
 )
 
@@ -26,8 +28,9 @@ urlpatterns = [
     # Admin
     url(r'^admin/', admin.site.urls),
     # Home
-    url(r'^$', Home.as_view()),
+    url(r'^$', Home.as_view(), name='home'),
     # Manage Account
+    url(r'^accounts/register/', Registration.as_view(), name='registration_register'),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     # Institutions
     url(r'^institutions/', Institutions.as_view()),
