@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+from tastypie.api import Api
+
 from studentools.forms import SignUpForm
 from studentools.views import (
     Home,
@@ -27,6 +29,20 @@ from studentools.views import (
     Registration,
     Institutions
 )
+from api.resources import (
+    UniversityResource,
+    FacultyResource,
+    InstituteResource,
+    SchoolResource,
+    TeacherResource
+)
+
+api_v1 = Api(api_name='v1')
+api_v1.register(UniversityResource())
+api_v1.register(FacultyResource())
+api_v1.register(InstituteResource())
+api_v1.register(SchoolResource())
+api_v1.register(TeacherResource())
 
 urlpatterns = [
     # Admin
@@ -43,4 +59,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     # Institutions
     url(r'^institutions/', Institutions.as_view()),
+
+    # Api
+    url(r'^api/', include(api_v1.urls)),
 ] + staticfiles_urlpatterns()

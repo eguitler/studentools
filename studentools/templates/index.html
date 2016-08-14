@@ -4,7 +4,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'dist/css/index.css' %}" />
-    <script src="{% static 'dist/js/map.js' %}" ></script>
+    <script src="{% static 'dist/js/index.js' %}" ></script>
 {% endblock %}
 
 {% block content %}
@@ -14,9 +14,11 @@
             </div>
             <div class="col-sm-6" id="sidebar">
                 <ul class="nav navbar-top-links navbar-right">
-                    <li><a href="#">Particular </a></li>
-                    <li><a href="#">Terciario </a></li>
-                    <li><a href="#">Universitario </a></li>
+                    <li><button class='btn btn-default' onclick='load_data("all")'>Mostrar todo </a></li>
+                    <li><button class='btn btn-default' onclick='load_data("tea")'>Particular </a></li>
+                    <li><button class='btn btn-default' onclick='load_data("sch")'>Escolar </a></li>
+                    <li><button class='btn btn-default' onclick='load_data("ins")'>Terciario </a></li>
+                    <li><button class='btn btn-default' onclick='load_data("fac")'>Universitario </a></li>
                 </ul>
             </div>
         </div>
@@ -42,7 +44,7 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li><p>Universidad de Buenos Aires (UBA)</p></li>
+                        <!-- list of choices for filter -->
                     </ul>
                 </div>
             </div>
@@ -54,7 +56,6 @@
             </div>
         </div>
     </div>
-    <script scr="{% static 'dist/js/index.js' %}" ></script>
 {% endblock %}
 
 {% block asd %}
