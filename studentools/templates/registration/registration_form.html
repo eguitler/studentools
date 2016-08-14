@@ -1,9 +1,12 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    <style src="{% static 'dist/registration/registration_form.css' %}"></style>
+{% endblock %}
 
 {% block content %}
-    <style>
-        ul,li {list-style-type:none;}
-    </style>
+    <p>Todos los campos a continuacion son obligatorios</p> 
     <form action="#" method="post">
         {% csrf_token %}
         <p>{{ form.first_name.errors.0 }} {{ form.first_name }}</p>
@@ -14,7 +17,7 @@
         <p>{{ form.password2.errors.0 }} {{ form.password2 }}</p>
         <p>{{ form.birthday.errors.0 }} {{ form.birthday }}</p>
         <p>{{ form.genere.errors.0 }} {{form.genere.0}} {{ form.genere.1 }}</p>
-        <p>By clicking Sign Up, you agree to our Terms and that you have read our Data Policy, including our Cookie Use.</p>
-        <input class="btn btn-info" type="submit" value="Sign Up">
+        <p>Al hacer clic en Terminado, aceptas las Condiciones y confirmas que has leído nuestra Política de datos, incluido el Uso de cookies.</p>
+        <input class="btn btn-info" type="submit" value="Terminado">
     </form>
 {% endblock %}
