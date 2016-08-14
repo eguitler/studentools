@@ -1,5 +1,3 @@
-import os
-
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import View
@@ -7,7 +5,8 @@ from django.views.generic import View
 from django.contrib.auth.views import login
 from registration.backends.hmac.views import RegistrationView
 
-from  studentools.forms import (
+from studentools.settings import REGISTRATION_OPEN
+from studentools.forms import (
     SignUpForm,
     LogInForm
 )
@@ -15,16 +14,38 @@ from  studentools.forms import (
 class Home(View):
 
     def get(self, request):
-        context = {}
         if os.getenv('MAINTENANCE'):
             return render(request, 'maintenance.html')
-        if request.user.is_authenticated():
-            return render(request, 'index.html', context)
-        else:
-            return login(request, authentication_form=LogInForm)
+        context = {}
+        return render(request, 'index.html', context)
 
-    def post(self, request):
-        return login(request, authentication_form=LogInForm)
+
+class AboutUs(View):
+
+    def get(self, request):
+        context = {}
+        return render(request, 'about_us.html', context)
+
+
+class HowWorks(View):
+
+    def get(self, request):
+        context = {}
+        return render(request, 'how_works.html', context)
+
+
+class Contact(View):
+
+    def get(self, request):
+        context = {}
+        return render(request, 'contact.html', context)
+
+
+class Profile(View):
+
+    def get(self, request):
+        context = {}
+        return render(request, 'registration/profile.html', context)
 
 
 class Registration(RegistrationView):

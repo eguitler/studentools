@@ -20,6 +20,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from studentools.forms import SignUpForm
 from studentools.views import (
     Home,
+    AboutUs,
+    HowWorks,
+    Contact,
+    Profile,
     Registration,
     Institutions
 )
@@ -29,7 +33,12 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # Home
     url(r'^$', Home.as_view(), name='home'),
+    # Links
+    url(r'^QuienesSomos/', AboutUs.as_view()),
+    url(r'^ComoFunciona/', HowWorks.as_view()),
+    url(r'^Contacto/', Contact.as_view()),
     # Manage Account
+    url(r'^accounts/profile/', Profile.as_view()),
     url(r'^accounts/register/', Registration.as_view(), name='registration_register'),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     # Institutions
